@@ -1,0 +1,46 @@
+<div class="recent-container" *ngIf="tableData && tableData.length > 0">
+  <div class="recent-header">
+    <h4>You recently searched for</h4>
+    <div class="clear-wrapper" (click)="openPopup()">Clear All</div>
+    <app-pop-up-component
+      *ngIf="showPopup"
+      (confirmClicked)="removeAllData()"
+      (cancelClicked)="closePopup()"
+    ></app-pop-up-component>
+  </div>
+  <div
+    class="table-row-container"
+    *ngFor="let item of tableData; let index = index"
+  >
+    <div class="row-content">
+      <div class="city">{{ item.city + ", " + item.state }}</div>
+      <span class="weather-info">
+        <img
+          [src]="item.weatherIcon"
+          alt="current-weather"
+          class="current-weather-icon"
+        />
+        <span class="weather-temp">{{ item.temperature }}</span
+        >&#8451;
+        <span class="temp-text">{{ item.weatherText }}</span>
+      </span>
+      <div class="fav-image-wrapper">
+        <img
+          [src]="
+            item.isFav
+              ? '../../assets/fav_active.svg'
+              : '../../assets/fav_icon.png'
+          "
+          alt="Image"
+          class="fav-image"
+          (click)="addRemFav($event, item.isFav, item.city)"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="no-recent-search-container" *ngIf="!tableData || tableData.length === 0">
+  <img src="../../assets/icon_nothing.svg" alt="no-recent-search-img" />
+  <div class="no-recent-search-message">No Recent Search</div>
+</div>

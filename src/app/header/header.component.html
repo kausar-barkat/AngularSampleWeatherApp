@@ -1,0 +1,31 @@
+<div class="header-container">
+  <div class="menu-toggle-btn" (click)="toggleSidebar()">
+    <span></span>
+    <span></span>
+    <span></span>
+    <div class="sidebar" *ngIf="isSidebarOpen">
+      <ul>
+        <li *ngFor="let item of navbarItems">
+          <a
+            routerLink="{{ item.link }}"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >{{ item.label }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+  <img src="../../assets/weather_logo.svg" alt="app_logo" />
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" placeholder="Search city" [(ngModel)]="searchText" (keydown.enter)="sendMessage(searchText)"/>
+      <img
+        alt="search_icon"
+        class="search-position"
+        src="../../assets//search_icon.svg"
+        (click)="sendMessage(searchText)"
+      />
+    </div>
+  </div>
+</div>

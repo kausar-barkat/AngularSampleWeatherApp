@@ -1,0 +1,13 @@
+<div class="navbar">
+  <ul>
+    <li *ngFor="let item of navbarItems">
+      <a
+        routerLink="{{ item.link }}"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >{{ item.label }}
+    </a>
+    </li>
+  </ul>
+  <div class="date-time">{{ today | date: 'EEE, dd MMM y, HH:mm a' }}</div>
+</div>

@@ -1,0 +1,40 @@
+.navbar {
+    margin-top: 2.5rem;
+    color: #FFFFFF;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin-left: 2.188rem;
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'Roboto-Regular';
+}
+
+a.active-link {
+    color: #FFD639;
+    padding-bottom: 0.65rem;
+    border-bottom: 3px solid #FFD639;
+    font-family: 'Roboto-Medium'
+}
+
+.date-time {
+    font-size: 0.875rem;
+    color: #FFFFFF;
+    font-family: 'Roboto-Regular';
+}

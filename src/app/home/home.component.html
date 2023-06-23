@@ -1,0 +1,59 @@
+<div class="home-container" *ngIf="weatherData.city">
+    <div class="city-state-name">{{ weatherData.city + ', ' + weatherData.state }}</div>
+    <div class="fav-city">
+        <div class="fav-wrapper" *ngIf="!weatherData.isFav" (click)="addRemFav(true)">
+            <img src="../../assets/fav_icon.png" alt="fav_icon" />Add to favourites
+        </div>
+        <div class="fav-wrapper" *ngIf="weatherData.isFav" (click)="addRemFav(false)">
+            <img src="../../assets/fav_active.svg" alt="fav_icon" />Added to favourites
+        </div>
+    </div>
+    <div class="current-weather">
+        <img [src]="weatherData.weatherIcon" alt="current-weather-img" />
+        <div class="degree-wrapper">
+            <span class="weather-degree">{{ isCelsius ? weatherData.celsius : weatherData.farenheit }}</span>
+            <button class="toggle-btn" [class.active]="isCelsius" (click)="isCelsius = true">&#8451;</button>
+            <button class="toggle-btn" [class.active]="!isCelsius" (click)="isCelsius = false">&#8457;</button>
+        </div>
+        <div class="weather-text">{{ weatherData.weatherText }}</div>
+    </div>
+    <hr class="line-color" />
+    <div class="weather-details">
+        <div class="extra-detail">
+            <img class="icon-info" src="../../assets/icon_temperature_info.svg" alt="temp-info" />
+            <div>
+                <div class="detail-title">Min - Max</div>
+                <div class="detail-data">{{(weatherData.celsius-5) + "&deg;" + " - " + (weatherData.celsius+5)+ "&deg;"}}</div>
+            </div>
+        </div>
+        <div class="extra-detail">
+            <img class="icon-info" src="../../assets/icon_precipitation_info.svg" alt="precipitation-info" />
+            <div>
+                <div class="detail-title">Precipitation</div>
+                <div class="detail-data">{{ weatherData.percipitation + "%" }}</div>
+            </div>
+        </div>
+        <div class="extra-detail">
+            <img class="icon-info" src="../../assets/icon_humidity_info.svg" alt="humidity-info" />
+            <div>
+                <div class="detail-title">Humidity</div>
+                <div class="detail-data">{{ weatherData.humidity + "%" }}</div>
+            </div>
+        </div>
+        <div class="extra-detail">
+            <img class="icon-info" src="../../assets/icon_wind_info.svg" alt="wind-info" />
+            <div>
+                <div class="detail-title">Wind</div>
+                <div class="detail-data">{{ weatherData.wind + " mph"}}</div>
+            </div>
+        </div>
+        <div class="extra-detail">
+            <img class="icon-info" src="../../assets/icon_visibility_info.svg" alt="visibility-info" />
+            <div>
+                <div class="detail-title">Visibility</div>
+                <div class="detail-data">{{ weatherData.visibility + " mph" }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-message" *ngIf="!weatherData.city">Search for any city.</div>
